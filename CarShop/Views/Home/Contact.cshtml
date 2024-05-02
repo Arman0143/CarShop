@@ -1,0 +1,114 @@
+﻿@model CarShop.DAL.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!--============================== Content Start ==============================-->
+<div class="banner_container">
+    <div class="container">
+        <div class="row align-items-center" data-aos="fade-in" data-aos-duration="900">
+            <div class="col-md-12">
+                <h1>Contact Us</h1>
+            </div>
+        </div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol>
+    </div>
+    <div class="banner_bg">
+        <img src="/include/images/hero-img1.jpg" alt="">
+    </div>
+</div>
+<!--============================== Content End ==============================-->
+<!--============================== Content Start ==============================-->
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "Contact" }))
+{
+    @Html.AntiForgeryToken();
+    <div class="content-container">
+        <div class="container">
+            <div class="row os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0.5s">
+                <div class="col-md-5 pe-md-5">
+                    <div class="main-heading">
+                        <h3>Contact Us</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, neque.</p>
+                    </div>
+                    <ul class="contact-inner-list">
+                        <li class="contact-inner-item">
+                            <div class="contact-box">
+                                <a href="tel: XXXXXXX">Toll Free : XXXXXXX</a>
+                                <span><i class="fas fa-phone-alt"></i></span>
+                            </div>
+                        </li>
+                        <li class="contact-inner-item">
+                            <div class="contact-box">
+                                <a href="#!">carservice@gmail.com.com</a>
+                                <span><i class="fas fa-envelope"></i></span>
+                            </div>
+                        </li>
+                        <li class="contact-inner-item">
+                            <div class="contact-box">
+                                Sat - Thu: 8AM - 7PM
+                                <span><i class="fas fa-clock"></i></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-7 ps-md-5">
+                    <div class="main-heading">
+                        <h3>Send Us Message</h3>
+                        @Html.HiddenFor(x=>x.id)
+                        <p>Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Eum, officia!</p>
+                        <div class="col-lg-12" style="font-size: 22px; font-family: math; font-weight: 600;">
+                            @if (ViewBag.Message != null)
+                            {
+                                <p class="text-success text-success-style">@ViewBag.Message</p>
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group1 ">
+                                @Html.ValidationMessageFor(x => x.name, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(x => x.name, new { @type = "text", @class = "form-control", @placeholder = "Name" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group1">
+                                @Html.ValidationMessageFor(x => x.email, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(x => x.email, new { @type = "email", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group1">
+                                @Html.ValidationMessageFor(x => x.number, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(x => x.number, new { @type = "text", @class = "form-control", @placeholder = "Phone" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group1">
+                                @Html.ValidationMessageFor(x => x.service, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(x => x.service, new { @type = "text", @class = "form-control", @placeholder = "Intrest Of service" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group1">
+                                @Html.TextAreaFor(x => x.message, new { @class = "form-control", @placeholder = "Message" })
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group1">
+                                <button class="btn btn-primary" type="submit"> <span>Submit</span> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!--============================== Content End ==============================-->
